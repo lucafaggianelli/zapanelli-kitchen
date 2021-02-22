@@ -1,5 +1,4 @@
 import cn from 'classnames'
-import { graphql } from 'gatsby'
 import React from 'react'
 
 import ArticleCard from '../components/ArticleCard'
@@ -7,11 +6,31 @@ import CategoriesMenu from '../components/CategoriesMenu'
 import Grid from '../components/Grid'
 import TextCard from '../components/TextCard'
 
-export default function IndexPage ({
-  data: {
-    allMarkdownRemark: { edges },
+const articles = [
+  {
+    id: 1,
+    name: 'Roasted chicken',
+    image: 'roasted-chicken.jpg'
   },
-}) {
+  {
+    id: 2,
+    name: 'Pasta al pesto',
+    size: 'tall',
+    image: 'spaghetti-al-pesto.jpg'
+  },
+  {
+    id: 3,
+    name: 'Moulles et frites',
+    image: 'moulles-frites.jpeg'
+  },
+  {
+    id: 4,
+    name: 'Lasagna bolognese',
+    image: 'lasagna.jpg'
+  }
+]
+
+export default function IndexPage () {
   return (
     <div>
       <h1 className="py-8 text-5xl font-bold text-center text-primary-800">BASiL</h1>
@@ -19,14 +38,14 @@ export default function IndexPage ({
       <CategoriesMenu />
 
       <Grid className="mt-12">
-        {edges.map(edge => (
+        {articles.map(article => (
           <ArticleCard
-            key={edge.node.id}
-            title={edge.node.frontmatter.title}
-            image={edge.node.frontmatter.image}
+            key={article.id}
+            title={article.name}
+            image={article.image}
             className={cn({
-              'row-span-2': edge.node.frontmatter.size === 'tall',
-              'col-span-2': edge.node.frontmatter.size === 'large'
+              'row-span-2': article.size === 'tall',
+              'col-span-2': article.size === 'large'
             })}
           />
         ))}
@@ -38,22 +57,3 @@ export default function IndexPage ({
     </div>
   )
 }
-
-export const pageQuery = graphql`
-  query {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-      edges {
-        node {
-          id
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            slug
-            title
-            image
-            size
-          }
-        }
-      }
-    }
-  }
-`
