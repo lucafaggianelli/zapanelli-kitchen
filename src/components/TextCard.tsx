@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import React from 'react'
 
-export default function TextCard ({ children, className, style }) {
+export default function TextCard ({ children, className = null, style = null }) {
   return (
     <div className={cn('flex flex-col', className)} style={style}>
       <div
