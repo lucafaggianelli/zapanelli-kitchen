@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function RecipeTopBar () {
   return (
-    <nav className="flex items-center pb-2 pt-4 border-b text-primary-100">
+    <nav className="flex items-center h-16 border-b-2 text-primary-100">
       <Link to="/">
         <Icon
           path={mdiArrowLeft}
