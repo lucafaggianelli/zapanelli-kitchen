@@ -2,7 +2,7 @@ import cn from 'classnames'
 import { Link } from 'gatsby'
 import React from 'react'
 
-export default function ArticleCard ({ className, image, title, to }) {
+export default function ArticleCard ({ className = null, image, title, to }) {
   return (
     <Link
       to={to}
