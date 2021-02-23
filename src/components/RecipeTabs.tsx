@@ -30,7 +30,7 @@ export default function RecipeTabs () {
   }, [ firstTab.current ])
 
   return (
-    <div className="relative h-16 flex justify-center text-primary-100 border-b-2">
+    <div className="relative h-16 flex justify-center text-primary-100 border-b-2 text-opacity-30">
       {tabs.map((tab, i) => (
         <div
           key={tab + i}
