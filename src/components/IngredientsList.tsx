@@ -14,7 +14,7 @@ export default function IngredientsList ({ ingredients = {} }: Props) {
         >
           <div className="text-primary-800 font-bold text-lg">{ingredient}</div>
 
-          <div className="flex-grow mx-2 text-primary-500 border-b-2 border-dotted" />
+          <div className="flex-grow mx-2 border-primary-500 border-b-2 border-dotted" />
 
           <div className="text-primary-500">{quantity}</div>
         </div>

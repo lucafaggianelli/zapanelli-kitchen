@@ -46,7 +46,7 @@ export default function RecipeTabs ({ onChange }) {
   }, [ firstTab.current ])
 
   return (
-    <div className="relative h-16 flex justify-center text-primary-100 border-b-2 text-opacity-30">
+    <div className="relative h-16 flex justify-center border-primary-100 border-b-2 border-opacity-30">
       {tabs.map((tab, i) => (
         <div
           key={tab + i}
@@ -62,7 +62,7 @@ export default function RecipeTabs ({ onChange }) {
       ))}
 
       <div
-        className="absolute border-b-2 text-primary-800 bottom-0 transform translate-y-full"
+        className="absolute border-b-2 border-primary-800 bottom-0 transform translate-y-full"
         style={{
           ...sliderStyle,
           transition: 'width .3s, left .3s'

@@ -6,6 +6,7 @@ import { graphql } from 'gatsby'
 import RecipeTabs from './RecipeTabs'
 import RecipeTopBar from './RecipeTopBar'
 import IngredientsList from './IngredientsList'
+import SvgImageFilter from './ImageSvgFilter'
 
 export default function Recipe({ data }) {
   const [ currentTab, setCurrentTab ] = useState(0)
@@ -15,18 +16,34 @@ export default function Recipe({ data }) {
 
   return (
     <div className="grid grid-cols-2">
+      <SvgImageFilter />
+
       <div>
         <RecipeTopBar />
 
         <div className="mr-8 mt-8">
-          <div className="bg-primary-100 bg-opacity-20 py-12 px-4">
-            <h1 className="text-6xl text-center text-secondary">
-              {frontmatter.title}
-            </h1>
+          <div className="hidden lg:block">
+            <img className="h-72 w-full object-cover" src={`/images/${frontmatter.image}`} />
+          </div>
 
+          <div className="relative bg-primary-100 lg:bg-transparent bg-opacity-20 py-12 px-4 lg:px-0">
             <div
-              className="border-b-2 mt-12 text-primary-100"
+              className="md:hidden absolute top-0 left-0 h-full w-full bg-center bg-cover"
+              style={{
+                backgroundImage: `url(/images/${frontmatter.image})`,
+                filter: 'url(#teal-white)'
+              }}
             />
+
+            <div className="relative">
+              <h1 className="text-6xl text-center text-secondary">
+                {frontmatter.title}
+              </h1>
+
+              <div
+                className="border-b-2 mt-12 border-primary-500"
+              />
+            </div>
           </div>
 
           <div
@@ -35,14 +52,14 @@ export default function Recipe({ data }) {
             {frontmatter.description}
           </div>
 
-          <div className="grid grid-cols-3 py-8 border-b-2 text-primary-500">
-            <div className="font-mono text-center border-r text-primary-100 text-opacity-50">
+          <div className="grid grid-cols-3 py-8 border-b-2 border-primary-500">
+            <div className="font-mono text-center border-r border-primary-100 border-opacity-50">
               <div className="text-primary-500">Cooking time</div>
 
               <div className="text-primary-800 font-bold">{frontmatter.time_min} min</div>
             </div>
 
-            <div className="font-mono text-center border-r text-primary-100 text-opacity-50">
+            <div className="font-mono text-center border-r border-primary-100 border-opacity-50">
               <div className="text-primary-500">Difficulty</div>
 
               <div className="flex justify-center text-primary-800 font-bold">
@@ -103,6 +120,7 @@ export const pageQuery = graphql`
       frontmatter {
         slug
         title
+        image
         description
         ingredients
         time_min

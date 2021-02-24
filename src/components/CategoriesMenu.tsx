@@ -20,7 +20,7 @@ export default function CategoriesMenu () {
           'tracking-wider text-sm uppercase mx-4 cursor-pointer',
           {
             'text-primary-500': !isSelected(category),
-            'text-primary-800 border-b font-bold': isSelected(category)
+            'text-primary-800 border-primary-800 border-b font-bold': isSelected(category)
           }
         )}
       >
