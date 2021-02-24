@@ -1,14 +1,16 @@
 import { Icon } from '@mdi/react'
 import { mdiStar, mdiCurrencyEur } from '@mdi/js'
-import React, { useState } from 'react'
+import cn from 'classnames'
 import { graphql } from 'gatsby'
+import React, { useState } from 'react'
 
 import RecipeTabs from './RecipeTabs'
 import RecipeTopBar from './RecipeTopBar'
 import IngredientsList from './IngredientsList'
 import SvgImageFilter from './ImageSvgFilter'
+import Tag from './Tag'
 
-export default function Recipe({ data }) {
+export default function Recipe({ data }: { data: any }) {
   const [ currentTab, setCurrentTab ] = useState(0)
 
   const { markdownRemark } = data
@@ -89,6 +91,12 @@ export default function Recipe({ data }) {
               </div>
             </div>
           </div>
+
+          <div className="flex justify-center mt-8">
+            {frontmatter.tags.map((tag: string, i: number) => (
+              <Tag name={tag} className={cn(i !== 0 && 'ml-8')} />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -126,6 +134,7 @@ export const pageQuery = graphql`
         time_min
         difficulty
         cost
+        tags
       }
     }
   }

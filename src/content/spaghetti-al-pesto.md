@@ -17,6 +17,10 @@ ingredients: |
     "Extra virgin olive oil": "10ml",
     "Pine nuts": "20g"
   }
+
+tags:
+  - vegetarian
+  - pasta
 ---
 
 Boil water and drop spaghetti, then mix pesto
