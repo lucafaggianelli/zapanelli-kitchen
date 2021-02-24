@@ -5,8 +5,10 @@ title: Spaghetti al pesto
 image: "spaghetti-al-pesto.jpg"
 description: "The simplicity of fresh basil and pine nuts with al dente spaghetti"
 
-difficulty: 2
 time_min: 30
+difficulty: 2
+cost: 1
+
 ingredients: |
   {
     "Spaghetti": "180g",

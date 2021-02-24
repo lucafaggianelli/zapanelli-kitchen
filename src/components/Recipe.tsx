@@ -1,3 +1,5 @@
+import { Icon } from '@mdi/react'
+import { mdiStar, mdiCurrencyEur } from '@mdi/js'
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 
@@ -32,6 +34,44 @@ export default function Recipe({ data }) {
           >
             {frontmatter.description}
           </div>
+
+          <div className="grid grid-cols-3 py-8 border-b-2 text-primary-500">
+            <div className="font-mono text-center border-r text-primary-100 text-opacity-50">
+              <div className="text-primary-500">Cooking time</div>
+
+              <div className="text-primary-800 font-bold">{frontmatter.time_min} min</div>
+            </div>
+
+            <div className="font-mono text-center border-r text-primary-100 text-opacity-50">
+              <div className="text-primary-500">Difficulty</div>
+
+              <div className="flex justify-center text-primary-800 font-bold">
+                {[1, 2, 3].map(level => (
+                  <Icon
+                    key={level}
+                    size={0.9}
+                    path={mdiStar}
+                    className={frontmatter.difficulty >= level ? '' : 'text-primary-100'}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="font-mono text-center">
+              <div className="text-primary-500">Cost</div>
+
+              <div className="flex justify-center text-primary-800 font-bold">
+                {[1, 2, 3].map(level => (
+                  <Icon
+                    key={level}
+                    size={0.9}
+                    path={mdiCurrencyEur}
+                    className={frontmatter.cost >= level ? '' : 'text-primary-100'}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -65,6 +105,9 @@ export const pageQuery = graphql`
         title
         description
         ingredients
+        time_min
+        difficulty
+        cost
       }
     }
   }
