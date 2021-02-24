@@ -1,9 +1,13 @@
 import React from 'react'
 
-export default function IngredientsList ({ ingredients }) {
+interface Props {
+  ingredients?: { [ingredient: string]: string | number }
+}
+
+export default function IngredientsList ({ ingredients = {} }: Props) {
   return (
     <div>
-      {Object.entries(ingredients).map(([ ingredient, quantity ]) => (
+      {Object.entries(ingredients || {}).map(([ ingredient, quantity ]) => (
         <div
           key={ingredient}
           className="flex font-mono items-baseline py-2"
