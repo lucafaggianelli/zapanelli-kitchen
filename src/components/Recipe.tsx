@@ -16,6 +16,8 @@ export default function Recipe({ data }: { data: any }) {
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
 
+  const tags = frontmatter.tags || []
+
   return (
     <div className="grid grid-cols-2">
       <SvgImageFilter />
@@ -93,7 +95,7 @@ export default function Recipe({ data }: { data: any }) {
           </div>
 
           <div className="flex justify-center mt-8">
-            {frontmatter.tags.map((tag: string, i: number) => (
+            {tags.map((tag: string, i: number) => (
               <Tag name={tag} className={cn(i !== 0 && 'ml-8')} />
             ))}
           </div>
