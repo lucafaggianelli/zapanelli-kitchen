@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import React, { useEffect, useRef, useState } from 'react'
 
-export default function RecipeTabs () {
+export default function RecipeTabs ({ onChange }) {
   const [ currentTab, setCurrentTab ] = useState(0)
   const [ sliderStyle, setSliderStyle ] = useState({ left: 0, width: 0 })
   const firstTab = useRef<HTMLDivElement>()
@@ -10,6 +10,7 @@ export default function RecipeTabs () {
 
   const onClickTab = (_event: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
     setCurrentTab(index)
+    onChange(index)
 
     const event = { ..._event }
 
@@ -21,12 +22,27 @@ export default function RecipeTabs () {
     }, 0)
   }
 
-  useEffect(() => {
-    console.log(firstTab.current)
+  const updateIndicatorState = () => {
     setSliderStyle({
       left: firstTab.current.offsetLeft,
       width: firstTab.current.offsetWidth
     })
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      updateIndicatorState()
+    }
+
+    window.addEventListener('resize', handleResize)
+    document.addEventListener('load', handleResize)
+
+    updateIndicatorState()
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      document.removeEventListener('load', handleResize)
+    }
   }, [ firstTab.current ])
 
   return (

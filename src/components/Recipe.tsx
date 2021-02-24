@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 
 import RecipeTabs from './RecipeTabs'
 import RecipeTopBar from './RecipeTopBar'
+import IngredientsList from './IngredientsList'
 
 export default function Recipe({ data }) {
+  const [ currentTab, setCurrentTab ] = useState(0)
+
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
 
@@ -33,16 +36,20 @@ export default function Recipe({ data }) {
       </div>
 
       <div>
-        <RecipeTabs />
+        <RecipeTabs onChange={setCurrentTab} />
 
         <div className="ml-8 mt-8">
-          <div className="font-mono text-primary-800">
-            <div className="text-lg font-bold">Directions</div>
-
-            <div
-              dangerouslySetInnerHTML={{ __html: html }}
+          {currentTab === 0 &&
+            <IngredientsList
+              ingredients={JSON.parse(frontmatter.ingredients)}
             />
-          </div>
+          }
+
+          {currentTab === 1 &&
+            <div className="font-mono text-primary-800">
+              <div dangerouslySetInnerHTML={{ __html: html }} />
+            </div>
+          }
         </div>
       </div>
     </div>
@@ -57,6 +64,7 @@ export const pageQuery = graphql`
         slug
         title
         description
+        ingredients
       }
     }
   }
