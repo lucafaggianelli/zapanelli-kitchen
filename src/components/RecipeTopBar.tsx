@@ -14,7 +14,7 @@ export default function RecipeTopBar () {
         />
       </Link>
 
-      <div className="ml-4 text-2xl font-bold text-primary-800">BASiL</div>
+      <div className="ml-4 text-2xl font-bold text-primary-800">Zk</div>
     </nav>
   )
 }

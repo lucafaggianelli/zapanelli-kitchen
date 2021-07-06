@@ -14,7 +14,9 @@ export default function IndexPage ({
 }) {
   return (
     <div>
-      <h1 className="py-8 text-5xl font-bold text-center text-primary-800">BASiL</h1>
+      <h1 className="py-8 text-5xl font-bold text-center text-primary-800">
+        Zk
+      </h1>
 
       <CategoriesMenu />
 
