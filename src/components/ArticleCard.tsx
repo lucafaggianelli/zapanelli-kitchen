@@ -1,5 +1,6 @@
 import cn from 'classnames'
 import { Link } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import React from 'react'
 
 export default function ArticleCard ({ className = null, image, title, to }) {
@@ -8,9 +9,10 @@ export default function ArticleCard ({ className = null, image, title, to }) {
       to={to}
       className={cn('flex flex-col', className)}
     >
-      <div
+      <GatsbyImage
+        image={getImage(image)!}
         className="flex-grow bg-center bg-cover bg-gray-100"
-        style={{ backgroundImage: image ? `url(/images/${image})` : null }}
+        alt={title}
       />
 
       <div className="text-center text-secondary text-2xl mt-4">

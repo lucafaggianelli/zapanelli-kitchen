@@ -28,17 +28,18 @@ export default function Recipe({ data }: { data: any }) {
 
         <div className="mr-8 mt-8">
           <div className="hidden lg:block">
-            <GatsbyImage image={getImage(frontmatter.image)!} className="h-72 w-full object-cover" alt={frontmatter.title} />
-            {/* <img className="h-72 w-full object-cover" src={`/images/${frontmatter.image}`} /> */}
+            <GatsbyImage
+              image={getImage(frontmatter.image)!}
+              className="h-72 w-full object-cover"
+              alt={frontmatter.title}
+            />
           </div>
 
           <div className="relative bg-primary-100 lg:bg-transparent bg-opacity-20 py-12 px-4 lg:px-0">
-            <div
+            <GatsbyImage
+              image={getImage(frontmatter.image)!}
               className="md:hidden absolute top-0 left-0 h-full w-full bg-center bg-cover"
-              style={{
-                backgroundImage: `url(/images/${frontmatter.image})`,
-                filter: 'url(#teal-white)'
-              }}
+              alt={frontmatter.title}
             />
 
             <div className="relative">
