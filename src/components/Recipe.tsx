@@ -31,8 +31,9 @@ export default function Recipe({ data }: { data: any }) {
       <div>
         <RecipeTopBar />
 
-        <div className="mr-0 md:mr-8 mt-8">
+        <div className="m-0 md:mr-8 md:mt-8">
           <div className="hidden lg:block">
+            {/* Image for Desktop */}
             <GatsbyImage
               image={getImage(frontmatter.image)!}
               className="h-72 w-full object-cover"
@@ -41,9 +42,10 @@ export default function Recipe({ data }: { data: any }) {
           </div>
 
           <div className="relative bg-primary-100 lg:bg-transparent bg-opacity-20 py-12 px-4 lg:px-0">
+            {/* Image for Mobile */}
             <GatsbyImage
               image={getImage(frontmatter.image)!}
-              className="md:hidden absolute top-0 left-0 h-full w-full bg-center bg-cover"
+              className="md:hidden absolute top-0 left-0 h-full w-full bg-center bg-cover filter grayscale-50"
               alt={frontmatter.title}
             />
 
@@ -53,26 +55,26 @@ export default function Recipe({ data }: { data: any }) {
               </h1>
 
               <div
-                className="border-b-2 mt-12 border-primary-500"
+                className="border-b-4 md:border-b-2 mt-12 border-primary-500"
               />
             </div>
           </div>
 
           <div
-            className="font-mono text-xl px-12 text-primary-800 text-center"
+            className="font-mono text-xl mt-12 md:mt-0 px-12 text-primary-800 text-center"
           >
             {frontmatter.description}
           </div>
 
-          <div className="grid grid-cols-3 py-8 border-b-2 border-primary-500">
+          <div className="grid grid-cols-3 py-8">
             <div className="font-mono text-center border-r border-primary-100 border-opacity-50">
-              <div className="text-primary-500">Cooking time</div>
+              <div className="text-primary-500 px-2">Cooking time</div>
 
               <div className="text-primary-800 font-bold">{frontmatter.time_min} min</div>
             </div>
 
             <div className="font-mono text-center border-r border-primary-100 border-opacity-50">
-              <div className="text-primary-500">Difficulty</div>
+              <div className="text-primary-500 px-2">Difficulty</div>
 
               <div className="flex justify-center text-primary-800 font-bold">
                 {[1, 2, 3].map(level => (
@@ -87,7 +89,7 @@ export default function Recipe({ data }: { data: any }) {
             </div>
 
             <div className="font-mono text-center">
-              <div className="text-primary-500">Cost</div>
+              <div className="text-primary-500 px-2">Cost</div>
 
               <div className="flex justify-center text-primary-800 font-bold">
                 {[1, 2, 3].map(level => (
@@ -102,9 +104,9 @@ export default function Recipe({ data }: { data: any }) {
             </div>
           </div>
 
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center py-4 md:border-b-2 border-primary-500">
             {tags.map((tag: string, i: number) => (
-              <Tag name={tag} className={cn(i !== 0 && 'ml-8')} />
+              <Tag key={tag} name={tag} className={cn(i !== 0 && 'ml-8')} />
             ))}
           </div>
         </div>
@@ -113,7 +115,7 @@ export default function Recipe({ data }: { data: any }) {
       <div>
         <RecipeTabs onChange={setCurrentTab} />
 
-        <div className="ml-8 mt-8">
+        <div className="md:ml-8 mt-8 px-4">
           {currentTab === 0 &&
             <IngredientsList
               ingredients={JSON.parse(frontmatter.ingredients)}

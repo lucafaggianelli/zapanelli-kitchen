@@ -39,8 +39,8 @@ export default function IndexPage ({
           />
         ))}
 
-        <TextCard className="row-start-2 md:col-start-2 md:row-start-1">
-          Hearty, organic entrees that taste just a little better than homemade.
+        <TextCard className="row-start-3 md:col-start-2 md:row-start-1">
+          Delicious dishes made with ♥
         </TextCard>
       </Grid>
     </div>

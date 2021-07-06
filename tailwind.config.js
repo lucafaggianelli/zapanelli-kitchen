@@ -11,6 +11,11 @@ module.exports = {
         },
         secondary: '#FD5523',
         background: '#FFFBE6'
+      },
+      grayscale: {
+        25: '25%',
+        50: '50%',
+        75: '75%',
       }
     }
   },

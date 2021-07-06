@@ -46,13 +46,13 @@ export default function RecipeTabs ({ onChange }) {
   }, [ firstTab.current ])
 
   return (
-    <div className="relative h-16 flex justify-center border-primary-100 border-b-2 border-opacity-30">
+    <div className="relative h-16 flex justify-center max-w-full overflow-x-auto">
       {tabs.map((tab, i) => (
         <div
           key={tab + i}
           ref={i === 0 ? firstTab : null}
           className={cn(
-            'flex items-center h-full px-12 uppercase text-sm tracking-wider cursor-pointer',
+            'flex items-center px-12 uppercase text-sm tracking-wider cursor-pointer border-primary-100 border-b-2 border-opacity-30',
             currentTab === i ? 'font-bold text-primary-800' : 'font-medium text-primary-500'
           )}
           onClick={event => onClickTab(event, i)}
@@ -62,7 +62,7 @@ export default function RecipeTabs ({ onChange }) {
       ))}
 
       <div
-        className="absolute border-b-2 border-primary-800 bottom-0 transform translate-y-full"
+        className="absolute border-b-2 border-primary-800 bottom-0"
         style={{
           ...sliderStyle,
           transition: 'width .3s, left .3s'
