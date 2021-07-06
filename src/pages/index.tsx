@@ -26,8 +26,8 @@ export default function IndexPage ({
             image={edge.node.frontmatter.image}
             to={edge.node.frontmatter.slug}
             className={cn({
-              'row-span-2': edge.node.frontmatter.size === 'tall',
-              'col-span-2': edge.node.frontmatter.size === 'large'
+              'md:row-span-2': edge.node.frontmatter.size === 'tall',
+              'md:col-span-2': edge.node.frontmatter.size === 'large'
             })}
           />
         ))}
@@ -52,7 +52,11 @@ export const pageQuery = graphql`
             title
             image {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(
+                  width: 200
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
             size

@@ -11,7 +11,7 @@ export default function ArticleCard ({ className = null, image, title, to }) {
     >
       <GatsbyImage
         image={getImage(image)!}
-        className="flex-grow bg-center bg-cover bg-gray-100"
+        className="flex-grow bg-gray-100"
         alt={title}
       />
 

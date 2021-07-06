@@ -12,7 +12,7 @@ export default function CategoriesMenu () {
   const isSelected = (category: string) =>
     category === CATEGORIES[1]
 
-  return <nav className="flex justify-center">
+  return <nav className="flex justify-center max-w-full overflow-x-auto">
     {CATEGORIES.map(category => (
       <div
         key={category}

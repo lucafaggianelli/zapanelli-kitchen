@@ -20,13 +20,13 @@ export default function Recipe({ data }: { data: any }) {
   const tags = frontmatter.tags || []
 
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-1 md:grid-cols-2">
       <SvgImageFilter />
 
       <div>
         <RecipeTopBar />
 
-        <div className="mr-8 mt-8">
+        <div className="mr-0 md:mr-8 mt-8">
           <div className="hidden lg:block">
             <GatsbyImage
               image={getImage(frontmatter.image)!}
