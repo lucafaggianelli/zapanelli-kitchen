@@ -3,6 +3,7 @@ module.exports = {
     title: "Zapanelli Kitchen",
   },
   plugins: [
+    "gatsby-plugin-brotli",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
