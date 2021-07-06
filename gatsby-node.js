@@ -36,3 +36,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     })
   })
 }
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+ createTypes(`
+   type Mdx implements Node {
+     frontmatter: Frontmatter
+   }
+   type Frontmatter @dontInfer {
+     image: [File] @link(by:"url")
+   }
+ `)
+}

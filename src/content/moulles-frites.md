@@ -2,7 +2,7 @@
 slug: "/moulles-frites"
 date: "2021-02-22"
 title: Moulles-Frites
-image: "moulles-frites.jpeg"
+image: ../images/moulles-frites.jpeg
 description: "The simplicity of fresh basil and pine nuts with al dente spaghetti"
 ---
 

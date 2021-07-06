@@ -2,6 +2,7 @@ import { Icon } from '@mdi/react'
 import { mdiStar, mdiCurrencyEur } from '@mdi/js'
 import cn from 'classnames'
 import { graphql } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import React, { useState } from 'react'
 
 import RecipeTabs from './RecipeTabs'
@@ -27,7 +28,8 @@ export default function Recipe({ data }: { data: any }) {
 
         <div className="mr-8 mt-8">
           <div className="hidden lg:block">
-            <img className="h-72 w-full object-cover" src={`/images/${frontmatter.image}`} />
+            <GatsbyImage image={getImage(frontmatter.image)!} className="h-72 w-full object-cover" alt={frontmatter.title} />
+            {/* <img className="h-72 w-full object-cover" src={`/images/${frontmatter.image}`} /> */}
           </div>
 
           <div className="relative bg-primary-100 lg:bg-transparent bg-opacity-20 py-12 px-4 lg:px-0">
@@ -130,7 +132,11 @@ export const pageQuery = graphql`
       frontmatter {
         slug
         title
-        image
+        image {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
         description
         ingredients
         time_min
