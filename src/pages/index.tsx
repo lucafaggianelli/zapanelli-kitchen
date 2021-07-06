@@ -39,7 +39,7 @@ export default function IndexPage ({
           />
         ))}
 
-        <TextCard style={{ gridRow: 1, gridColumn: 2 }}>
+        <TextCard className="row-start-2 md:col-start-2 md:row-start-1">
           Hearty, organic entrees that taste just a little better than homemade.
         </TextCard>
       </Grid>
@@ -60,9 +60,9 @@ export const pageQuery = graphql`
             image {
               childImageSharp {
                 gatsbyImageData(
-                  width: 200
-                  placeholder: BLURRED
-                  formats: [AUTO, WEBP, AVIF]
+                  width: 350
+                  placeholder: DOMINANT_COLOR
+                  layout: CONSTRAINED
                 )
               }
             }

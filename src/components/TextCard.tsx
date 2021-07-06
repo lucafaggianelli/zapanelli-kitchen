@@ -13,7 +13,7 @@ export default function TextCard ({ children, className = null, style = null }) 
       </div>
 
       {/* Dummy element for card sizing */}
-      <div className="text-center text-2xl mt-4">
+      <div className="hidden md:block text-center text-2xl mt-4">
         &nbsp;
       </div>
     </div>
