@@ -3,6 +3,7 @@ import { mdiStar, mdiCurrencyEur } from '@mdi/js'
 import cn from 'classnames'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { Helmet } from 'react-helmet'
 import React, { useState } from 'react'
 
 import RecipeTabs from './RecipeTabs'
@@ -21,6 +22,10 @@ export default function Recipe({ data }: { data: any }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2">
+      <Helmet>
+        <title>{frontmatter.title} | Zapanelli kitchen</title>
+      </Helmet>
+
       <SvgImageFilter />
 
       <div>

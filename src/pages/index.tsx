@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import { graphql } from 'gatsby'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 import ArticleCard from '../components/ArticleCard'
 import CategoriesMenu from '../components/CategoriesMenu'
@@ -14,6 +15,10 @@ export default function IndexPage ({
 }) {
   return (
     <div>
+      <Helmet>
+        <title>Zapanelli kitchen</title>
+      </Helmet>
+
       <h1 className="py-8 text-5xl font-bold text-center text-primary-800">
         Zk
       </h1>
