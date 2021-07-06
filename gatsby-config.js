@@ -3,7 +3,6 @@ module.exports = {
     title: "Zapanelli Kitchen",
   },
   plugins: [
-    "gatsby-plugin-brotli",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
@@ -11,6 +10,7 @@ module.exports = {
     "gatsby-plugin-postcss",
     "gatsby-plugin-layout",
     "gatsby-transformer-sharp",
+    "gatsby-transformer-remark",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -34,6 +34,11 @@ module.exports = {
         path: `${__dirname}/src/content`
       }
     },
-    'gatsby-transformer-remark'
+    {
+      resolve: 'gatsby-plugin-brotli',
+      options: {
+        extensions: ['css', 'html', 'js']
+      }
+    }
   ],
 };
